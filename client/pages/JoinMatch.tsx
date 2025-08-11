@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Trophy, MapPin, Clock, Users, Star, Filter, Search, Basketball, Football, Tennis, CheckCircle, AlertCircle } from "lucide-react";
+import { Trophy, MapPin, Clock, Users, Star, Filter, Search, Circle, Hexagon, Target, CheckCircle, AlertCircle } from "lucide-react";
 
 interface Match {
   id: number;
