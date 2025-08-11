@@ -50,6 +50,7 @@ const App = () => (
           {/* Owner Routes */}
           <Route path="/owner-signup" element={<OwnerOnboarding />} />
           <Route path="/owner-dashboard" element={<OwnerDashboard />} />
+          <Route path="/owner-profile" element={<OwnerProfile />} />
           <Route path="/add-court" element={<AddCourt />} />
 
           {/* Info Pages */}
