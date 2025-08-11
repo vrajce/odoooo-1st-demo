@@ -92,26 +92,8 @@ const App = () => (
           />
 
           {/* Dynamic Routes */}
-          <Route
-            path="/court/:id"
-            element={
-              <PlaceholderPage
-                title="Court Details"
-                description="View detailed information about this sports facility."
-                suggestedAction="Ask me to build the court detail page with gallery, amenities, and booking!"
-              />
-            }
-          />
-          <Route
-            path="/match/:id"
-            element={
-              <PlaceholderPage
-                title="Match Details"
-                description="View match information and send join requests."
-                suggestedAction="Ask me to build the match detail page with player info and join functionality!"
-              />
-            }
-          />
+          <Route path="/court/:id" element={<CourtDetails />} />
+          <Route path="/match/:id" element={<MatchDetails />} />
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
