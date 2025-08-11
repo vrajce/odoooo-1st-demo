@@ -47,16 +47,7 @@ const App = () => (
 
           {/* Owner Routes */}
           <Route path="/owner-signup" element={<OwnerOnboarding />} />
-          <Route
-            path="/owner-dashboard"
-            element={
-              <PlaceholderPage
-                title="Owner Dashboard"
-                description="Manage your courts, bookings, and earnings from a comprehensive dashboard."
-                suggestedAction="Ask me to build the owner dashboard with analytics and management tools!"
-              />
-            }
-          />
+          <Route path="/owner-dashboard" element={<OwnerDashboard />} />
 
           {/* Info Pages */}
           <Route
