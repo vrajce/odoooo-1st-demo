@@ -187,12 +187,17 @@ export default function AdminDashboard() {
 
   const handleVerificationAction = async (id: string, action: 'approve' | 'reject') => {
     setProcessingAction(id);
-    
+
     // Simulate API call
     setTimeout(() => {
       setProcessingAction(null);
       alert(`Verification ${action}d successfully!`);
     }, 1500);
+  };
+
+  const handleViewDetails = (id: string) => {
+    // Toggle viewing details for the specific verification
+    setViewingDetails(viewingDetails === id ? null : id);
   };
 
   const handleCourtAction = async (id: string, action: 'approve' | 'reject') => {
