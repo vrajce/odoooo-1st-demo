@@ -16,6 +16,7 @@ import JoinMatch from "./pages/JoinMatch";
 import CourtBooking from "./pages/CourtBooking";
 import PlayerProfile from "./pages/PlayerProfile";
 import Community from "./pages/Community";
+import OwnerOnboarding from "./pages/OwnerOnboarding";
 
 const queryClient = new QueryClient();
 
