@@ -14,12 +14,12 @@ interface Court {
 }
 
 const sports = [
-  { id: "basketball", name: "Basketball", icon: Basketball, color: "bg-orange-500" },
-  { id: "football", name: "Football", icon: Football, color: "bg-green-500" },
-  { id: "tennis", name: "Tennis", icon: Tennis, color: "bg-yellow-500" },
-  { id: "volleyball", name: "Volleyball", icon: Volleyball, color: "bg-blue-500" },
-  { id: "tabletennis", name: "Table Tennis", icon: TableTennis, color: "bg-red-500" },
-  { id: "badminton", name: "Badminton", icon: Badminton, color: "bg-purple-500" }
+  { id: "basketball", name: "Basketball", icon: Circle, color: "bg-orange-500" },
+  { id: "football", name: "Football", icon: Hexagon, color: "bg-green-500" },
+  { id: "tennis", name: "Tennis", icon: Target, color: "bg-yellow-500" },
+  { id: "volleyball", name: "Volleyball", icon: Square, color: "bg-blue-500" },
+  { id: "tabletennis", name: "Table Tennis", icon: Octagon, color: "bg-red-500" },
+  { id: "badminton", name: "Badminton", icon: Zap, color: "bg-purple-500" }
 ];
 
 const courts: Court[] = [
