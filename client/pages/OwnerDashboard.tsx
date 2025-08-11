@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Trophy, Building, DollarSign, Users, Calendar, TrendingUp, Star, MapPin, Clock, Plus, Settings, BarChart3, Eye, Edit, Trash2 } from "lucide-react";
+import { Trophy, Building, DollarSign, Users, Calendar, TrendingUp, Star, MapPin, Clock, Plus, Settings, BarChart3, Eye, Edit, Trash2, Check } from "lucide-react";
 
 interface BookingData {
   id: string;
