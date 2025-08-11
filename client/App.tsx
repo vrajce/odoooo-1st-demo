@@ -54,6 +54,9 @@ const App = () => (
           <Route path="/owner-profile" element={<OwnerProfile />} />
           <Route path="/add-court" element={<AddCourt />} />
 
+          {/* Admin Routes */}
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+
           {/* Info Pages */}
           <Route
             path="/about"
