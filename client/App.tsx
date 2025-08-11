@@ -58,11 +58,14 @@ const App = () => (
           <Route path="/add-court" element={<AddCourt />} />
 
           {/* Admin Routes */}
-          <Route path="/admin-dashboard" element={
-            <ErrorBoundary>
-              <AdminDashboard />
-            </ErrorBoundary>
-          } />
+          <Route
+            path="/admin-dashboard"
+            element={
+              <ErrorBoundary>
+                <AdminDashboard />
+              </ErrorBoundary>
+            }
+          />
 
           {/* Info Pages */}
           <Route path="/about" element={<About />} />
