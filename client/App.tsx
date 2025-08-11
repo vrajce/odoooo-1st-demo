@@ -60,26 +60,8 @@ const App = () => (
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
 
           {/* Info Pages */}
-          <Route
-            path="/about"
-            element={
-              <PlaceholderPage
-                title="About QuickCourt"
-                description="Learn more about our mission to connect sports enthusiasts worldwide."
-                suggestedAction="Ask me to build the about page with team info and company story!"
-              />
-            }
-          />
-          <Route
-            path="/contact"
-            element={
-              <PlaceholderPage
-                title="Contact Us"
-                description="Get in touch with our team for support or business inquiries."
-                suggestedAction="Ask me to build the contact page with form and map integration!"
-              />
-            }
-          />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
           <Route
             path="/help"
             element={
