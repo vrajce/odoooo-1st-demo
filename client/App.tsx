@@ -17,6 +17,9 @@ import CourtBooking from "./pages/CourtBooking";
 import PlayerProfile from "./pages/PlayerProfile";
 import Community from "./pages/Community";
 import OwnerOnboarding from "./pages/OwnerOnboarding";
+import OwnerDashboard from "./pages/OwnerDashboard";
+import CourtDetails from "./pages/CourtDetails";
+import MatchDetails from "./pages/MatchDetails";
 
 const queryClient = new QueryClient();
 
