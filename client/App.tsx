@@ -20,6 +20,7 @@ import OwnerOnboarding from "./pages/OwnerOnboarding";
 import OwnerDashboard from "./pages/OwnerDashboard";
 import CourtDetails from "./pages/CourtDetails";
 import MatchDetails from "./pages/MatchDetails";
+import AddCourt from "./pages/AddCourt";
 
 const queryClient = new QueryClient();
 
