@@ -28,41 +28,12 @@ const App = () => (
           <Route path="/" element={<Index />} />
 
           {/* Player Routes */}
-          <Route path="/book-court" element={
-            <PlaceholderPage
-              title="Book a Court"
-              description="Reserve your preferred sports facility with real-time availability and flexible scheduling."
-              suggestedAction="Ask me to build the court booking page with calendar, real-time slots, and payment integration!"
-            />
-          } />
-          <Route path="/join-match" element={
-            <PlaceholderPage
-              title="Join a Match"
-              description="Find and join exciting sports matches happening in your area."
-              suggestedAction="Ask me to build the match joining page with filters, match details, and request system!"
-            />
-          } />
-          <Route path="/create-match" element={
-            <PlaceholderPage
-              title="Create a Match"
-              description="Organize your own sports match and invite players from the community."
-              suggestedAction="Ask me to build the match creation page with form validation and player invitation system!"
-            />
-          } />
-          <Route path="/courts" element={
-            <PlaceholderPage
-              title="Browse Courts"
-              description="Explore all available sports courts with detailed information and booking options."
-              suggestedAction="Ask me to build the courts listing page with filters, map view, and detailed court profiles!"
-            />
-          } />
-          <Route path="/matches" element={
-            <PlaceholderPage
-              title="Active Matches"
-              description="View all ongoing and upcoming matches you can join."
-              suggestedAction="Ask me to build the matches page with live updates and filtering options!"
-            />
-          } />
+          <Route path="/book-court" element={<CourtBooking />} />
+          <Route path="/join-match" element={<JoinMatch />} />
+          <Route path="/create-match" element={<CreateMatch />} />
+          <Route path="/profile" element={<PlayerProfile />} />
+          <Route path="/courts" element={<CourtBooking />} />
+          <Route path="/matches" element={<JoinMatch />} />
           <Route path="/community" element={
             <PlaceholderPage
               title="Sports Community"
