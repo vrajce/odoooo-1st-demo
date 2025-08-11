@@ -455,6 +455,39 @@ export default function AdminDashboard() {
                         </div>
                       </div>
 
+                      {/* Detailed View */}
+                      {viewingDetails === verification.id && (
+                        <div className="mb-4 p-4 bg-white rounded-xl border border-gray-200">
+                          <h5 className="font-semibold text-gray-900 mb-3">Additional Details</h5>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                              <p className="text-sm text-gray-600 mb-1">Business Registration</p>
+                              <p className="text-sm text-gray-900">Private Limited Company</p>
+                            </div>
+                            <div>
+                              <p className="text-sm text-gray-600 mb-1">Annual Revenue</p>
+                              <p className="text-sm text-gray-900">₹50,00,000 - ₹1,00,00,000</p>
+                            </div>
+                            <div>
+                              <p className="text-sm text-gray-600 mb-1">Number of Courts</p>
+                              <p className="text-sm text-gray-900">3-5 courts planned</p>
+                            </div>
+                            <div>
+                              <p className="text-sm text-gray-600 mb-1">Experience</p>
+                              <p className="text-sm text-gray-900">5+ years in sports management</p>
+                            </div>
+                          </div>
+                          <div className="mt-4">
+                            <p className="text-sm text-gray-600 mb-1">Business Description</p>
+                            <p className="text-sm text-gray-900">
+                              Established sports facility management company specializing in premium indoor courts
+                              with focus on basketball and tennis. Committed to providing world-class facilities
+                              for athletes of all skill levels.
+                            </p>
+                          </div>
+                        </div>
+                      )}
+
                       <div className="flex space-x-3">
                         <button
                           onClick={() => handleViewDetails(verification.id)}
