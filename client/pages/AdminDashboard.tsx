@@ -175,6 +175,7 @@ export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState('overview');
   const [selectedComplaint, setSelectedComplaint] = useState<string | null>(null);
   const [processingAction, setProcessingAction] = useState<string | null>(null);
+  const [viewingDetails, setViewingDetails] = useState<string | null>(null);
 
   const tabs = [
     { id: 'overview', label: 'Overview' },
