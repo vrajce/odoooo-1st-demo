@@ -456,9 +456,12 @@ export default function AdminDashboard() {
                       </div>
 
                       <div className="flex space-x-3">
-                        <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-100 transition-colors">
+                        <button
+                          onClick={() => handleViewDetails(verification.id)}
+                          className="flex items-center space-x-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-100 transition-colors"
+                        >
                           <Eye className="w-4 h-4" />
-                          <span>View Details</span>
+                          <span>{viewingDetails === verification.id ? 'Hide Details' : 'View Details'}</span>
                         </button>
                         <button
                           onClick={() => handleVerificationAction(verification.id, 'approve')}
