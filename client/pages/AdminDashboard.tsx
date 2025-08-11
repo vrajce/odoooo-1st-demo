@@ -325,7 +325,7 @@ export default function AdminDashboard() {
             const IconComponent = metric.icon;
             return (
               <div
-                key={index}
+                key={metric.label}
                 className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 hover-lift animate-slide-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
