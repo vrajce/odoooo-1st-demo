@@ -11,6 +11,10 @@ import NotFound from "./pages/NotFound";
 import PlaceholderPage from "./pages/PlaceholderPage";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import CreateMatch from "./pages/CreateMatch";
+import JoinMatch from "./pages/JoinMatch";
+import CourtBooking from "./pages/CourtBooking";
+import PlayerProfile from "./pages/PlayerProfile";
 
 const queryClient = new QueryClient();
 
