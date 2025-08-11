@@ -15,6 +15,7 @@ import CreateMatch from "./pages/CreateMatch";
 import JoinMatch from "./pages/JoinMatch";
 import CourtBooking from "./pages/CourtBooking";
 import PlayerProfile from "./pages/PlayerProfile";
+import Community from "./pages/Community";
 
 const queryClient = new QueryClient();
 
