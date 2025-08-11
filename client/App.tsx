@@ -22,6 +22,7 @@ import CourtDetails from "./pages/CourtDetails";
 import MatchDetails from "./pages/MatchDetails";
 import AddCourt from "./pages/AddCourt";
 import OwnerProfile from "./pages/OwnerProfile";
+import AdminDashboard from "./pages/AdminDashboard";
 
 const queryClient = new QueryClient();
 
