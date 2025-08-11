@@ -35,16 +35,7 @@ const App = () => (
           <Route path="/profile" element={<PlayerProfile />} />
           <Route path="/courts" element={<CourtBooking />} />
           <Route path="/matches" element={<JoinMatch />} />
-          <Route
-            path="/community"
-            element={
-              <PlaceholderPage
-                title="Sports Community"
-                description="Connect with fellow sports enthusiasts and build your network."
-                suggestedAction="Ask me to build the community page with player profiles and social features!"
-              />
-            }
-          />
+          <Route path="/community" element={<Community />} />
 
           {/* Auth Routes */}
           <Route path="/login" element={<Login />} />
