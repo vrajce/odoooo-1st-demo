@@ -68,20 +68,8 @@ const App = () => (
           } />
 
           {/* Auth Routes */}
-          <Route path="/login" element={
-            <PlaceholderPage
-              title="Player Login"
-              description="Sign in to your QuickCourt account to access booking and match features."
-              suggestedAction="Ask me to build the login page with role selection and smooth animations!"
-            />
-          } />
-          <Route path="/signup" element={
-            <PlaceholderPage
-              title="Join QuickCourt"
-              description="Create your account and start your sports journey with us."
-              suggestedAction="Ask me to build the multi-step signup process with role selection and verification!"
-            />
-          } />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
 
           {/* Owner Routes */}
           <Route path="/owner-signup" element={
