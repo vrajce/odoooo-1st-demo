@@ -43,16 +43,7 @@ const App = () => (
           <Route path="/signup" element={<Signup />} />
 
           {/* Owner Routes */}
-          <Route
-            path="/owner-signup"
-            element={
-              <PlaceholderPage
-                title="List Your Court"
-                description="Join as a court owner and start earning from your sports facilities."
-                suggestedAction="Ask me to build the owner onboarding with business verification!"
-              />
-            }
-          />
+          <Route path="/owner-signup" element={<OwnerOnboarding />} />
           <Route
             path="/owner-dashboard"
             element={
