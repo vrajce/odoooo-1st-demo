@@ -23,6 +23,8 @@ import MatchDetails from "./pages/MatchDetails";
 import AddCourt from "./pages/AddCourt";
 import OwnerProfile from "./pages/OwnerProfile";
 import AdminDashboard from "./pages/AdminDashboard";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 const queryClient = new QueryClient();
 
