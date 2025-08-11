@@ -1,6 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Trophy, User, Building, Shield, ChevronRight, ChevronLeft, Check, Upload, Eye, EyeOff } from "lucide-react";
+import {
+  Trophy,
+  User,
+  Building,
+  Shield,
+  ChevronRight,
+  ChevronLeft,
+  Check,
+  Upload,
+  Eye,
+  EyeOff,
+} from "lucide-react";
 
 interface FormData {
   firstName: string;
@@ -25,7 +36,7 @@ export default function Signup() {
     confirmPassword: "",
     role: "player",
     avatar: null,
-    otp: ""
+    otp: "",
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -36,31 +47,46 @@ export default function Signup() {
   const steps = [
     { id: 1, title: "Basic Info", description: "Tell us about yourself" },
     { id: 2, title: "Role Selection", description: "Choose your role" },
-    { id: 3, title: "Verification", description: "Verify your account" }
+    { id: 3, title: "Verification", description: "Verify your account" },
   ];
 
   const roles = [
-    { 
-      id: "player", 
-      label: "Player", 
-      icon: User, 
+    {
+      id: "player",
+      label: "Player",
+      icon: User,
       description: "Book courts and join matches",
-      features: ["Book courts", "Join matches", "Create matches", "Player community"]
+      features: [
+        "Book courts",
+        "Join matches",
+        "Create matches",
+        "Player community",
+      ],
     },
-    { 
-      id: "owner", 
-      label: "Court Owner", 
-      icon: Building, 
+    {
+      id: "owner",
+      label: "Court Owner",
+      icon: Building,
       description: "Manage your sports facilities",
-      features: ["List your courts", "Manage bookings", "Analytics dashboard", "Revenue tracking"]
+      features: [
+        "List your courts",
+        "Manage bookings",
+        "Analytics dashboard",
+        "Revenue tracking",
+      ],
     },
-    { 
-      id: "admin", 
-      label: "Administrator", 
-      icon: Shield, 
+    {
+      id: "admin",
+      label: "Administrator",
+      icon: Shield,
       description: "Platform administration",
-      features: ["User management", "Court approval", "System analytics", "Support tools"]
-    }
+      features: [
+        "User management",
+        "Court approval",
+        "System analytics",
+        "Support tools",
+      ],
+    },
   ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -95,7 +121,7 @@ export default function Signup() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
@@ -104,9 +130,10 @@ export default function Signup() {
       const redirectMap = {
         player: "/",
         owner: "/owner-onboarding",
-        admin: "/admin-dashboard"
+        admin: "/admin-dashboard",
       };
-      window.location.href = redirectMap[formData.role as keyof typeof redirectMap];
+      window.location.href =
+        redirectMap[formData.role as keyof typeof redirectMap];
     }, 2000);
   };
 
@@ -118,13 +145,14 @@ export default function Signup() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-sahara-100 via-sahara-50 to-feijoa-50 flex items-center justify-center px-4 py-8">
       {/* Background */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1544944194-b447c5c04315?w=1200&h=800&fit=crop&crop=center')",
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1544944194-b447c5c04315?w=1200&h=800&fit=crop&crop=center')",
         }}
       />
-      
+
       <div className="relative z-10 w-full max-w-2xl">
         {/* Logo */}
         <div className="text-center mb-8">
@@ -134,8 +162,12 @@ export default function Signup() {
             </div>
             <span className="text-2xl font-bold text-gray-900">QuickCourt</span>
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Join QuickCourt</h1>
-          <p className="text-gray-600">Create your account and start your sports journey</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            Join QuickCourt
+          </h1>
+          <p className="text-gray-600">
+            Create your account and start your sports journey
+          </p>
         </div>
 
         {/* Progress Indicator */}
@@ -143,24 +175,36 @@ export default function Signup() {
           <div className="flex items-center justify-between mb-4">
             {steps.map((step, index) => (
               <div key={step.id} className="flex-1 flex items-center">
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all duration-300 ${
-                  step.id <= currentStep 
-                    ? 'bg-energy-400 text-gray-900' 
-                    : 'bg-white border-2 border-gray-300 text-gray-500'
-                }`}>
-                  {step.id < currentStep ? <Check className="w-5 h-5" /> : step.id}
+                <div
+                  className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all duration-300 ${
+                    step.id <= currentStep
+                      ? "bg-energy-400 text-gray-900"
+                      : "bg-white border-2 border-gray-300 text-gray-500"
+                  }`}
+                >
+                  {step.id < currentStep ? (
+                    <Check className="w-5 h-5" />
+                  ) : (
+                    step.id
+                  )}
                 </div>
                 {index < steps.length - 1 && (
-                  <div className={`flex-1 h-1 mx-4 transition-all duration-300 ${
-                    step.id < currentStep ? 'bg-energy-400' : 'bg-gray-300'
-                  }`} />
+                  <div
+                    className={`flex-1 h-1 mx-4 transition-all duration-300 ${
+                      step.id < currentStep ? "bg-energy-400" : "bg-gray-300"
+                    }`}
+                  />
                 )}
               </div>
             ))}
           </div>
           <div className="text-center">
-            <h2 className="text-xl font-semibold text-gray-900">{steps[currentStep - 1].title}</h2>
-            <p className="text-gray-600">{steps[currentStep - 1].description}</p>
+            <h2 className="text-xl font-semibold text-gray-900">
+              {steps[currentStep - 1].title}
+            </h2>
+            <p className="text-gray-600">
+              {steps[currentStep - 1].description}
+            </p>
           </div>
         </div>
 
@@ -175,23 +219,36 @@ export default function Signup() {
                   <div className="relative inline-block">
                     <div className="w-24 h-24 rounded-full bg-gradient-atlantis flex items-center justify-center overflow-hidden">
                       {avatarPreview ? (
-                        <img src={avatarPreview} alt="Avatar" className="w-full h-full object-cover" />
+                        <img
+                          src={avatarPreview}
+                          alt="Avatar"
+                          className="w-full h-full object-cover"
+                        />
                       ) : (
                         <User className="w-8 h-8 text-white" />
                       )}
                     </div>
                     <label className="absolute -bottom-2 -right-2 w-8 h-8 bg-feijoa-500 rounded-full flex items-center justify-center cursor-pointer hover:bg-feijoa-600 transition-colors">
                       <Upload className="w-4 h-4 text-white" />
-                      <input type="file" accept="image/*" onChange={handleAvatarChange} className="sr-only" />
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleAvatarChange}
+                        className="sr-only"
+                      />
                     </label>
                   </div>
-                  <p className="text-sm text-gray-500 mt-2">Upload your profile photo</p>
+                  <p className="text-sm text-gray-500 mt-2">
+                    Upload your profile photo
+                  </p>
                 </div>
 
                 {/* Name Fields */}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      First Name
+                    </label>
                     <input
                       type="text"
                       name="firstName"
@@ -203,7 +260,9 @@ export default function Signup() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Last Name
+                    </label>
                     <input
                       type="text"
                       name="lastName"
@@ -218,7 +277,9 @@ export default function Signup() {
 
                 {/* Email */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Email Address
+                  </label>
                   <input
                     type="email"
                     name="email"
@@ -232,7 +293,9 @@ export default function Signup() {
 
                 {/* Phone */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Phone Number
+                  </label>
                   <input
                     type="tel"
                     name="phone"
@@ -246,7 +309,9 @@ export default function Signup() {
 
                 {/* Password */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Password
+                  </label>
                   <div className="relative">
                     <input
                       type={showPassword ? "text" : "password"}
@@ -262,14 +327,20 @@ export default function Signup() {
                       onClick={() => setShowPassword(!showPassword)}
                       className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors"
                     >
-                      {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      {showPassword ? (
+                        <EyeOff className="w-5 h-5" />
+                      ) : (
+                        <Eye className="w-5 h-5" />
+                      )}
                     </button>
                   </div>
                 </div>
 
                 {/* Confirm Password */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Confirm Password
+                  </label>
                   <div className="relative">
                     <input
                       type={showConfirmPassword ? "text" : "password"}
@@ -282,10 +353,16 @@ export default function Signup() {
                     />
                     <button
                       type="button"
-                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
                       className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors"
                     >
-                      {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      {showConfirmPassword ? (
+                        <EyeOff className="w-5 h-5" />
+                      ) : (
+                        <Eye className="w-5 h-5" />
+                      )}
                     </button>
                   </div>
                 </div>
@@ -296,8 +373,12 @@ export default function Signup() {
             {currentStep === 2 && (
               <div className="space-y-6 animate-slide-up">
                 <div className="text-center mb-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Choose Your Role</h3>
-                  <p className="text-gray-600">Select how you'll be using QuickCourt</p>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    Choose Your Role
+                  </h3>
+                  <p className="text-gray-600">
+                    Select how you'll be using QuickCourt
+                  </p>
                 </div>
 
                 <div className="space-y-4">
@@ -308,8 +389,8 @@ export default function Signup() {
                         key={role.id}
                         className={`block p-6 rounded-xl border-2 cursor-pointer transition-all duration-300 hover:border-atlantis-300 hover:shadow-md ${
                           formData.role === role.id
-                            ? 'border-atlantis-500 bg-atlantis-50 shadow-md'
-                            : 'border-gray-200 bg-white'
+                            ? "border-atlantis-500 bg-atlantis-50 shadow-md"
+                            : "border-gray-200 bg-white"
                         }`}
                       >
                         <input
@@ -317,25 +398,44 @@ export default function Signup() {
                           name="role"
                           value={role.id}
                           checked={formData.role === role.id}
-                          onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                          onChange={(e) =>
+                            setFormData({ ...formData, role: e.target.value })
+                          }
                           className="sr-only"
                         />
                         <div className="flex items-start space-x-4">
-                          <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                            formData.role === role.id ? 'bg-atlantis-500' : 'bg-gray-100'
-                          }`}>
-                            <IconComponent className={`w-6 h-6 ${
-                              formData.role === role.id ? 'text-white' : 'text-gray-600'
-                            }`} />
+                          <div
+                            className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                              formData.role === role.id
+                                ? "bg-atlantis-500"
+                                : "bg-gray-100"
+                            }`}
+                          >
+                            <IconComponent
+                              className={`w-6 h-6 ${
+                                formData.role === role.id
+                                  ? "text-white"
+                                  : "text-gray-600"
+                              }`}
+                            />
                           </div>
                           <div className="flex-1">
-                            <div className="font-semibold text-gray-900 mb-1">{role.label}</div>
-                            <div className="text-gray-600 mb-3">{role.description}</div>
+                            <div className="font-semibold text-gray-900 mb-1">
+                              {role.label}
+                            </div>
+                            <div className="text-gray-600 mb-3">
+                              {role.description}
+                            </div>
                             <div className="grid grid-cols-2 gap-2">
                               {role.features.map((feature, index) => (
-                                <div key={index} className="flex items-center space-x-2">
+                                <div
+                                  key={index}
+                                  className="flex items-center space-x-2"
+                                >
                                   <Check className="w-4 h-4 text-feijoa-500" />
-                                  <span className="text-sm text-gray-600">{feature}</span>
+                                  <span className="text-sm text-gray-600">
+                                    {feature}
+                                  </span>
                                 </div>
                               ))}
                             </div>
@@ -354,17 +454,24 @@ export default function Signup() {
                 <div className="w-20 h-20 bg-gradient-feijoa rounded-full flex items-center justify-center mx-auto mb-4">
                   <Check className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900">Almost Done!</h3>
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Almost Done!
+                </h3>
                 <p className="text-gray-600">
-                  We'll send a verification code to <strong>{formData.email}</strong> to confirm your account.
+                  We'll send a verification code to{" "}
+                  <strong>{formData.email}</strong> to confirm your account.
                 </p>
-                
+
                 <div className="bg-sahara-50 rounded-xl p-6">
-                  <h4 className="font-semibold text-gray-900 mb-3">Account Summary:</h4>
+                  <h4 className="font-semibold text-gray-900 mb-3">
+                    Account Summary:
+                  </h4>
                   <div className="space-y-2 text-left">
                     <div className="flex justify-between">
                       <span className="text-gray-600">Name:</span>
-                      <span className="font-medium">{formData.firstName} {formData.lastName}</span>
+                      <span className="font-medium">
+                        {formData.firstName} {formData.lastName}
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Email:</span>
@@ -372,7 +479,9 @@ export default function Signup() {
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Role:</span>
-                      <span className="font-medium capitalize">{formData.role}</span>
+                      <span className="font-medium capitalize">
+                        {formData.role}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -404,7 +513,7 @@ export default function Signup() {
                 onClick={nextStep}
                 className="flex items-center space-x-2 px-6 py-3 bg-gradient-atlantis text-white rounded-xl font-medium hover:bg-apple-500 transition-all duration-300 transform hover:scale-105"
               >
-                <span>{currentStep === 3 ? 'Create Account' : 'Continue'}</span>
+                <span>{currentStep === 3 ? "Create Account" : "Continue"}</span>
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
@@ -420,8 +529,12 @@ export default function Signup() {
               <div className="w-16 h-16 bg-gradient-feijoa rounded-full flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Verify Your Email</h3>
-              <p className="text-gray-600">Enter the 6-digit code sent to {formData.email}</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                Verify Your Email
+              </h3>
+              <p className="text-gray-600">
+                Enter the 6-digit code sent to {formData.email}
+              </p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -448,7 +561,7 @@ export default function Signup() {
                     <span>Verifying...</span>
                   </div>
                 ) : (
-                  'Verify & Create Account'
+                  "Verify & Create Account"
                 )}
               </button>
 

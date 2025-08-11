@@ -1,6 +1,18 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Trophy, Calendar, Clock, MapPin, Star, ChevronLeft, ChevronRight, MessageCircle, CreditCard, CheckCircle, X } from "lucide-react";
+import {
+  Trophy,
+  Calendar,
+  Clock,
+  MapPin,
+  Star,
+  ChevronLeft,
+  ChevronRight,
+  MessageCircle,
+  CreditCard,
+  CheckCircle,
+  X,
+} from "lucide-react";
 
 interface TimeSlot {
   id: string;
@@ -30,52 +42,58 @@ const courts: Court[] = [
     rating: 4.8,
     sports: ["Basketball", "Tennis", "Badminton"],
     amenities: ["Parking", "Lockers", "Showers", "Equipment Rental"],
-    image: "https://images.unsplash.com/photo-1544944194-b447c5c04315?w=400&h=300&fit=crop&crop=center",
+    image:
+      "https://images.unsplash.com/photo-1544944194-b447c5c04315?w=400&h=300&fit=crop&crop=center",
     pricePerHour: 500,
-    description: "Premium indoor sports facility with professional-grade courts and modern amenities."
+    description:
+      "Premium indoor sports facility with professional-grade courts and modern amenities.",
   },
   {
     id: 2,
     name: "Elite Sports Center",
-    location: "Business Park", 
+    location: "Business Park",
     rating: 4.9,
     sports: ["Football", "Cricket", "Volleyball"],
     amenities: ["Parking", "Cafeteria", "Lockers", "First Aid"],
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center",
+    image:
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center",
     pricePerHour: 750,
-    description: "State-of-the-art outdoor facility perfect for team sports and tournaments."
+    description:
+      "State-of-the-art outdoor facility perfect for team sports and tournaments.",
   },
   {
     id: 3,
     name: "Community Sports Hub",
     location: "Residential Area",
-    rating: 4.6, 
+    rating: 4.6,
     sports: ["Table Tennis", "Squash", "Gym"],
     amenities: ["Parking", "Lockers", "Equipment"],
-    image: "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=400&h=300&fit=crop&crop=center",
+    image:
+      "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=400&h=300&fit=crop&crop=center",
     pricePerHour: 350,
-    description: "Affordable community center with well-maintained facilities for all skill levels."
-  }
+    description:
+      "Affordable community center with well-maintained facilities for all skill levels.",
+  },
 ];
 
 const generateTimeSlots = (date: Date): TimeSlot[] => {
   const slots: TimeSlot[] = [];
   const startHour = 6; // 6 AM
   const endHour = 23; // 11 PM
-  
+
   for (let hour = startHour; hour <= endHour; hour++) {
-    const timeString = `${hour.toString().padStart(2, '0')}:00`;
+    const timeString = `${hour.toString().padStart(2, "0")}:00`;
     const isAvailable = Math.random() > 0.3; // Random availability for demo
-    
+
     slots.push({
       id: `${date.toDateString()}-${timeString}`,
       time: timeString,
       available: isAvailable,
       price: Math.floor(Math.random() * 200) + 400, // Random price between 400-600
-      duration: 1
+      duration: 1,
     });
   }
-  
+
   return slots;
 };
 
@@ -103,26 +121,26 @@ export default function CourtBooking() {
     const startingDayOfWeek = firstDay.getDay();
 
     const days = [];
-    
+
     // Add empty cells for days before the first day of the month
     for (let i = 0; i < startingDayOfWeek; i++) {
       days.push(null);
     }
-    
+
     // Add all days of the month
     for (let day = 1; day <= daysInMonth; day++) {
       days.push(new Date(year, month, day));
     }
-    
+
     return days;
   };
 
   const formatDate = (date: Date) => {
-    return date.toLocaleDateString('en-US', { 
-      weekday: 'long', 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
+    return date.toLocaleDateString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
   };
 
@@ -142,11 +160,15 @@ export default function CourtBooking() {
   };
 
   const nextMonth = () => {
-    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1));
+    setCurrentMonth(
+      new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1),
+    );
   };
 
   const prevMonth = () => {
-    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1));
+    setCurrentMonth(
+      new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1),
+    );
   };
 
   const handleSlotSelect = (slot: TimeSlot) => {
@@ -158,23 +180,37 @@ export default function CourtBooking() {
 
   const handleBooking = async () => {
     setIsBooking(true);
-    
+
     // Simulate booking API call
     setTimeout(() => {
       setIsBooking(false);
       setShowBookingModal(false);
       alert("Booking confirmed! Check your email for details.");
       // Update slot availability
-      setTimeSlots(prev => prev.map(slot => 
-        slot.id === selectedSlot?.id ? { ...slot, available: false } : slot
-      ));
+      setTimeSlots((prev) =>
+        prev.map((slot) =>
+          slot.id === selectedSlot?.id ? { ...slot, available: false } : slot,
+        ),
+      );
       setSelectedSlot(null);
     }, 2000);
   };
 
   const days = getDaysInMonth(currentMonth);
-  const monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"];
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-sahara-100 via-sahara-50 to-feijoa-50">
@@ -187,16 +223,35 @@ export default function CourtBooking() {
                 <div className="w-8 h-8 bg-gradient-atlantis rounded-lg flex items-center justify-center">
                   <Trophy className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-xl font-bold text-gray-900">QuickCourt</span>
+                <span className="text-xl font-bold text-gray-900">
+                  QuickCourt
+                </span>
               </Link>
               <div className="hidden md:flex space-x-6">
-                <Link to="/courts" className="text-atlantis-500 font-medium">Courts</Link>
-                <Link to="/matches" className="text-gray-700 hover:text-atlantis-500 transition-colors">Matches</Link>
-                <Link to="/community" className="text-gray-700 hover:text-atlantis-500 transition-colors">Community</Link>
+                <Link to="/courts" className="text-atlantis-500 font-medium">
+                  Courts
+                </Link>
+                <Link
+                  to="/matches"
+                  className="text-gray-700 hover:text-atlantis-500 transition-colors"
+                >
+                  Matches
+                </Link>
+                <Link
+                  to="/community"
+                  className="text-gray-700 hover:text-atlantis-500 transition-colors"
+                >
+                  Community
+                </Link>
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <Link to="/profile" className="text-gray-700 hover:text-atlantis-500 transition-colors">Profile</Link>
+              <Link
+                to="/profile"
+                className="text-gray-700 hover:text-atlantis-500 transition-colors"
+              >
+                Profile
+              </Link>
               <button className="px-6 py-2 bg-gradient-atlantis text-white rounded-xl font-medium hover:shadow-atlantis-glow transition-all duration-300">
                 Logout
               </button>
@@ -214,7 +269,9 @@ export default function CourtBooking() {
             </div>
             <div>
               <h1 className="text-3xl font-bold text-gray-900">Book a Court</h1>
-              <p className="text-gray-600">Reserve your preferred sports facility with flexible scheduling</p>
+              <p className="text-gray-600">
+                Reserve your preferred sports facility with flexible scheduling
+              </p>
             </div>
           </div>
         </div>
@@ -222,12 +279,13 @@ export default function CourtBooking() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          
           {/* Left Column - Court Selection */}
           <div className="lg:col-span-1 space-y-6">
             <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-              <h2 className="text-xl font-semibold text-gray-900 mb-6">Select Court</h2>
-              
+              <h2 className="text-xl font-semibold text-gray-900 mb-6">
+                Select Court
+              </h2>
+
               <div className="space-y-4">
                 {courts.map((court) => (
                   <div
@@ -235,20 +293,24 @@ export default function CourtBooking() {
                     onClick={() => setSelectedCourt(court)}
                     className={`p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 hover:shadow-md ${
                       selectedCourt.id === court.id
-                        ? 'border-atlantis-500 bg-atlantis-50 shadow-atlantis-glow/20'
-                        : 'border-gray-200 bg-white hover:border-atlantis-300'
+                        ? "border-atlantis-500 bg-atlantis-50 shadow-atlantis-glow/20"
+                        : "border-gray-200 bg-white hover:border-atlantis-300"
                     }`}
                   >
                     <div className="flex space-x-3">
-                      <img 
-                        src={court.image} 
+                      <img
+                        src={court.image}
                         alt={court.name}
                         className="w-16 h-16 rounded-xl object-cover"
                       />
                       <div className="flex-1">
                         <div className="flex justify-between items-start mb-1">
-                          <h3 className="font-semibold text-gray-900">{court.name}</h3>
-                          <span className="text-sm font-medium text-energy-600">₹{court.pricePerHour}/hr</span>
+                          <h3 className="font-semibold text-gray-900">
+                            {court.name}
+                          </h3>
+                          <span className="text-sm font-medium text-energy-600">
+                            ₹{court.pricePerHour}/hr
+                          </span>
                         </div>
                         <div className="flex items-center text-gray-600 mb-2">
                           <MapPin className="w-3 h-3 mr-1" />
@@ -256,7 +318,9 @@ export default function CourtBooking() {
                         </div>
                         <div className="flex items-center space-x-2">
                           <Star className="w-3 h-3 text-energy-400 fill-current" />
-                          <span className="text-xs text-gray-600">{court.rating}</span>
+                          <span className="text-xs text-gray-600">
+                            {court.rating}
+                          </span>
                           <div className="flex flex-wrap gap-1">
                             {court.sports.slice(0, 2).map((sport) => (
                               <span
@@ -277,14 +341,18 @@ export default function CourtBooking() {
 
             {/* Selected Court Details */}
             <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">{selectedCourt.name}</h3>
-              <img 
-                src={selectedCourt.image} 
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                {selectedCourt.name}
+              </h3>
+              <img
+                src={selectedCourt.image}
                 alt={selectedCourt.name}
                 className="w-full h-32 rounded-xl object-cover mb-4"
               />
-              <p className="text-gray-600 text-sm mb-4">{selectedCourt.description}</p>
-              
+              <p className="text-gray-600 text-sm mb-4">
+                {selectedCourt.description}
+              </p>
+
               <div className="space-y-2">
                 <h4 className="font-medium text-gray-900">Amenities:</h4>
                 <div className="flex flex-wrap gap-2">
@@ -303,22 +371,24 @@ export default function CourtBooking() {
 
           {/* Right Column - Calendar & Time Slots */}
           <div className="lg:col-span-2 space-y-6">
-            
             {/* Calendar */}
             <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-semibold text-gray-900">Select Date</h2>
+                <h2 className="text-xl font-semibold text-gray-900">
+                  Select Date
+                </h2>
                 <div className="flex items-center space-x-4">
-                  <button 
+                  <button
                     onClick={prevMonth}
                     className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
                   >
                     <ChevronLeft className="w-5 h-5" />
                   </button>
                   <span className="text-lg font-medium">
-                    {monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}
+                    {monthNames[currentMonth.getMonth()]}{" "}
+                    {currentMonth.getFullYear()}
                   </span>
-                  <button 
+                  <button
                     onClick={nextMonth}
                     className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
                   >
@@ -328,11 +398,16 @@ export default function CourtBooking() {
               </div>
 
               <div className="grid grid-cols-7 gap-1 mb-4">
-                {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
-                  <div key={day} className="p-2 text-center text-sm font-medium text-gray-500">
-                    {day}
-                  </div>
-                ))}
+                {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(
+                  (day) => (
+                    <div
+                      key={day}
+                      className="p-2 text-center text-sm font-medium text-gray-500"
+                    >
+                      {day}
+                    </div>
+                  ),
+                )}
               </div>
 
               <div className="grid grid-cols-7 gap-1">
@@ -344,12 +419,12 @@ export default function CourtBooking() {
                         disabled={isPastDate(day)}
                         className={`w-full h-full rounded-lg text-sm font-medium transition-all duration-200 ${
                           isPastDate(day)
-                            ? 'text-gray-300 cursor-not-allowed'
+                            ? "text-gray-300 cursor-not-allowed"
                             : isSameDay(day, selectedDate)
-                            ? 'bg-atlantis-500 text-white shadow-atlantis-glow/30'
-                            : isToday(day)
-                            ? 'bg-energy-100 text-energy-700 border border-energy-300'
-                            : 'text-gray-700 hover:bg-sahara-100'
+                              ? "bg-atlantis-500 text-white shadow-atlantis-glow/30"
+                              : isToday(day)
+                                ? "bg-energy-100 text-energy-700 border border-energy-300"
+                                : "text-gray-700 hover:bg-sahara-100"
                         }`}
                       >
                         {day.getDate()}
@@ -358,7 +433,7 @@ export default function CourtBooking() {
                   </div>
                 ))}
               </div>
-              
+
               <div className="mt-4 text-center text-sm text-gray-600">
                 Selected: {formatDate(selectedDate)}
               </div>
@@ -366,8 +441,10 @@ export default function CourtBooking() {
 
             {/* Time Slots */}
             <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-              <h2 className="text-xl font-semibold text-gray-900 mb-6">Available Time Slots</h2>
-              
+              <h2 className="text-xl font-semibold text-gray-900 mb-6">
+                Available Time Slots
+              </h2>
+
               <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3">
                 {timeSlots.map((slot) => (
                   <button
@@ -376,8 +453,8 @@ export default function CourtBooking() {
                     disabled={!slot.available}
                     className={`p-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                       slot.available
-                        ? 'bg-feijoa-100 text-feijoa-700 border border-feijoa-300 hover:bg-feijoa-200 hover:shadow-feijoa-glow/30'
-                        : 'bg-gray-100 text-gray-400 border border-gray-200 cursor-not-allowed'
+                        ? "bg-feijoa-100 text-feijoa-700 border border-feijoa-300 hover:bg-feijoa-200 hover:shadow-feijoa-glow/30"
+                        : "bg-gray-100 text-gray-400 border border-gray-200 cursor-not-allowed"
                     }`}
                   >
                     <div>{slot.time}</div>
@@ -406,8 +483,10 @@ export default function CourtBooking() {
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl max-w-md w-full p-8 shadow-2xl border border-atlantis-200 shadow-atlantis-glow/30">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-semibold text-gray-900">Confirm Booking</h3>
-              <button 
+              <h3 className="text-xl font-semibold text-gray-900">
+                Confirm Booking
+              </h3>
+              <button
                 onClick={() => setShowBookingModal(false)}
                 className="p-1 hover:bg-gray-100 rounded-lg transition-colors"
               >
@@ -417,11 +496,20 @@ export default function CourtBooking() {
 
             <div className="space-y-4 mb-6">
               <div className="bg-sahara-50 rounded-xl p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">{selectedCourt.name}</h4>
+                <h4 className="font-semibold text-gray-900 mb-2">
+                  {selectedCourt.name}
+                </h4>
                 <div className="space-y-1 text-sm text-gray-600">
-                  <p><strong>Date:</strong> {formatDate(selectedDate)}</p>
-                  <p><strong>Time:</strong> {selectedSlot.time} ({selectedSlot.duration}h)</p>
-                  <p><strong>Location:</strong> {selectedCourt.location}</p>
+                  <p>
+                    <strong>Date:</strong> {formatDate(selectedDate)}
+                  </p>
+                  <p>
+                    <strong>Time:</strong> {selectedSlot.time} (
+                    {selectedSlot.duration}h)
+                  </p>
+                  <p>
+                    <strong>Location:</strong> {selectedCourt.location}
+                  </p>
                 </div>
               </div>
 
@@ -431,11 +519,15 @@ export default function CourtBooking() {
               </div>
               <div className="flex justify-between items-center py-3 border-t border-gray-200">
                 <span className="text-gray-600">Service fee</span>
-                <span className="font-semibold">₹{Math.floor(selectedSlot.price * 0.1)}</span>
+                <span className="font-semibold">
+                  ₹{Math.floor(selectedSlot.price * 0.1)}
+                </span>
               </div>
               <div className="flex justify-between items-center py-3 border-t-2 border-gray-300 font-semibold text-lg">
                 <span>Total</span>
-                <span>₹{selectedSlot.price + Math.floor(selectedSlot.price * 0.1)}</span>
+                <span>
+                  ₹{selectedSlot.price + Math.floor(selectedSlot.price * 0.1)}
+                </span>
               </div>
             </div>
 
@@ -482,7 +574,7 @@ export default function CourtBooking() {
           <div className="p-4 border-b border-gray-200 bg-gradient-feijoa text-white rounded-t-2xl">
             <div className="flex justify-between items-center">
               <h4 className="font-semibold">Court Booking Assistant</h4>
-              <button 
+              <button
                 onClick={() => setShowChatBot(false)}
                 className="text-white/80 hover:text-white"
               >
@@ -493,7 +585,8 @@ export default function CourtBooking() {
           <div className="p-4 h-64 overflow-y-auto">
             <div className="space-y-3">
               <div className="bg-gray-100 rounded-lg p-3 text-sm">
-                Hi! I'm here to help you with court bookings. You can ask me about:
+                Hi! I'm here to help you with court bookings. You can ask me
+                about:
                 <ul className="mt-2 space-y-1 text-xs">
                   <li>• Court availability</li>
                   <li>• Pricing information</li>
@@ -505,7 +598,9 @@ export default function CourtBooking() {
                 What are the available time slots for tomorrow?
               </div>
               <div className="bg-gray-100 rounded-lg p-3 text-sm">
-                Tomorrow has several available slots! Most courts have availability from 6 AM to 11 PM. Would you like me to check specific courts or times?
+                Tomorrow has several available slots! Most courts have
+                availability from 6 AM to 11 PM. Would you like me to check
+                specific courts or times?
               </div>
             </div>
           </div>

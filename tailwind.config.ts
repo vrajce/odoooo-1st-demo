@@ -135,7 +135,8 @@ export default {
         sans: ["Inter", "system-ui", "sans-serif"],
       },
       backgroundImage: {
-        "gradient-atlantis": "linear-gradient(135deg, #a5c639 0%, #5d8b37 100%)",
+        "gradient-atlantis":
+          "linear-gradient(135deg, #a5c639 0%, #5d8b37 100%)",
         "gradient-feijoa": "linear-gradient(135deg, #a3d78e 0%, #5d8b37 100%)",
         "gradient-sahara": "linear-gradient(135deg, #f2e18c 0%, #f7d850 100%)",
       },
@@ -143,7 +144,7 @@ export default {
         "atlantis-glow": "0 0 20px rgba(165, 198, 57, 0.3)",
         "feijoa-glow": "0 0 20px rgba(163, 215, 142, 0.3)",
         "energy-glow": "0 0 20px rgba(247, 216, 80, 0.3)",
-        "lift": "0 10px 25px rgba(0, 0, 0, 0.1)",
+        lift: "0 10px 25px rgba(0, 0, 0, 0.1)",
       },
       keyframes: {
         "accordion-down": {

@@ -7,10 +7,10 @@ interface PlaceholderPageProps {
   suggestedAction?: string;
 }
 
-export default function PlaceholderPage({ 
-  title, 
-  description, 
-  suggestedAction = "Continue building this page with more prompts!" 
+export default function PlaceholderPage({
+  title,
+  description,
+  suggestedAction = "Continue building this page with more prompts!",
 }: PlaceholderPageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-sahara-100 via-sahara-50 to-feijoa-50">
@@ -23,23 +23,40 @@ export default function PlaceholderPage({
                 <div className="w-8 h-8 bg-gradient-atlantis rounded-lg flex items-center justify-center">
                   <Trophy className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-xl font-bold text-gray-900">QuickCourt</span>
+                <span className="text-xl font-bold text-gray-900">
+                  QuickCourt
+                </span>
               </Link>
               <div className="hidden md:flex space-x-6">
-                <Link to="/courts" className="text-gray-700 hover:text-atlantis-500 transition-colors">Courts</Link>
-                <Link to="/matches" className="text-gray-700 hover:text-atlantis-500 transition-colors">Matches</Link>
-                <Link to="/community" className="text-gray-700 hover:text-atlantis-500 transition-colors">Community</Link>
+                <Link
+                  to="/courts"
+                  className="text-gray-700 hover:text-atlantis-500 transition-colors"
+                >
+                  Courts
+                </Link>
+                <Link
+                  to="/matches"
+                  className="text-gray-700 hover:text-atlantis-500 transition-colors"
+                >
+                  Matches
+                </Link>
+                <Link
+                  to="/community"
+                  className="text-gray-700 hover:text-atlantis-500 transition-colors"
+                >
+                  Community
+                </Link>
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <Link 
-                to="/login" 
+              <Link
+                to="/login"
                 className="px-4 py-2 text-gray-700 hover:text-atlantis-500 transition-colors"
               >
                 Login
               </Link>
-              <Link 
-                to="/signup" 
+              <Link
+                to="/signup"
                 className="px-6 py-2 bg-gradient-atlantis text-white rounded-xl font-medium hover:shadow-atlantis-glow transition-all duration-300 transform hover:scale-105"
               >
                 Sign Up
@@ -59,27 +76,23 @@ export default function PlaceholderPage({
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               {title}
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              {description}
-            </p>
+            <p className="text-xl text-gray-600 mb-8">{description}</p>
           </div>
 
           <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 mb-8">
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">
               Coming Soon!
             </h2>
-            <p className="text-gray-600 mb-6">
-              {suggestedAction}
-            </p>
+            <p className="text-gray-600 mb-6">{suggestedAction}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
+              <Link
                 to="/"
                 className="inline-flex items-center space-x-2 px-6 py-3 bg-atlantis-500 text-white rounded-xl font-medium hover:bg-apple-500 transition-all duration-300 transform hover:scale-105"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>Back to Home</span>
               </Link>
-              <a 
+              <a
                 href="#"
                 className="inline-flex items-center space-x-2 px-6 py-3 bg-feijoa-500 text-white rounded-xl font-medium hover:bg-feijoa-600 transition-all duration-300 transform hover:scale-105"
                 onClick={(e) => {
@@ -94,7 +107,8 @@ export default function PlaceholderPage({
           </div>
 
           <div className="text-sm text-gray-500">
-            This is a placeholder page. The QuickCourt platform is being built progressively.
+            This is a placeholder page. The QuickCourt platform is being built
+            progressively.
           </div>
         </div>
       </div>

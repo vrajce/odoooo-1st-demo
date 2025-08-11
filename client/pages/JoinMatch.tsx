@@ -1,6 +1,19 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Trophy, MapPin, Clock, Users, Star, Filter, Search, Circle, Hexagon, Target, CheckCircle, AlertCircle } from "lucide-react";
+import {
+  Trophy,
+  MapPin,
+  Clock,
+  Users,
+  Star,
+  Filter,
+  Search,
+  Circle,
+  Hexagon,
+  Target,
+  CheckCircle,
+  AlertCircle,
+} from "lucide-react";
 
 interface Match {
   id: number;
@@ -21,7 +34,7 @@ interface Match {
     rating: number;
   };
   price: string;
-  status: 'open' | 'almost-full' | 'full';
+  status: "open" | "almost-full" | "full";
   distance: string;
   description: string;
 }
@@ -42,18 +55,20 @@ const matches: Match[] = [
     skillLevel: "Intermediate",
     organizer: {
       name: "Mike Johnson",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face",
-      rating: 4.8
+      avatar:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face",
+      rating: 4.8,
     },
     price: "₹100 per player",
-    status: 'open',
+    status: "open",
     distance: "2.3 km",
-    description: "Competitive basketball game with experienced players. We play full court and focus on team play. Bring your A-game!"
+    description:
+      "Competitive basketball game with experienced players. We play full court and focus on team play. Bring your A-game!",
   },
   {
     id: 2,
     title: "Weekend Football Match",
-    sport: "Football", 
+    sport: "Football",
     sportIcon: Hexagon,
     date: "Tomorrow",
     time: "8:00 AM",
@@ -65,13 +80,15 @@ const matches: Match[] = [
     skillLevel: "Advanced",
     organizer: {
       name: "Sarah Wilson",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612c47d?w=40&h=40&fit=crop&crop=face",
-      rating: 4.9
+      avatar:
+        "https://images.unsplash.com/photo-1494790108755-2616b612c47d?w=40&h=40&fit=crop&crop=face",
+      rating: 4.9,
     },
     price: "₹150 per player",
-    status: 'almost-full',
+    status: "almost-full",
     distance: "1.8 km",
-    description: "11-a-side football match on professional field. Looking for skilled players who can commit to the full match duration."
+    description:
+      "11-a-side football match on professional field. Looking for skilled players who can commit to the full match duration.",
   },
   {
     id: 3,
@@ -79,7 +96,7 @@ const matches: Match[] = [
     sport: "Tennis",
     sportIcon: Target,
     date: "Sunday",
-    time: "4:00 PM", 
+    time: "4:00 PM",
     duration: 3,
     location: "Residential Area",
     courtName: "Community Sports Hub",
@@ -88,13 +105,15 @@ const matches: Match[] = [
     skillLevel: "Beginner",
     organizer: {
       name: "David Chen",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face",
-      rating: 4.6
+      avatar:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face",
+      rating: 4.6,
     },
     price: "₹80 per player",
-    status: 'open',
-    distance: "3.1 km", 
-    description: "Friendly doubles tournament with round-robin format. Perfect for beginners looking to improve their game."
+    status: "open",
+    distance: "3.1 km",
+    description:
+      "Friendly doubles tournament with round-robin format. Perfect for beginners looking to improve their game.",
   },
   {
     id: 4,
@@ -104,21 +123,23 @@ const matches: Match[] = [
     date: "Monday",
     time: "7:00 PM",
     duration: 1,
-    location: "Downtown District", 
+    location: "Downtown District",
     courtName: "Sports Complex Arena",
     currentPlayers: 4,
     maxPlayers: 4,
     skillLevel: "Intermediate",
     organizer: {
       name: "Alex Rodriguez",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=face",
-      rating: 4.7
+      avatar:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=face",
+      rating: 4.7,
     },
     price: "₹75 per player",
-    status: 'full',
+    status: "full",
     distance: "2.3 km",
-    description: "Focused practice session working on fundamentals and team plays. Great for improving skills."
-  }
+    description:
+      "Focused practice session working on fundamentals and team plays. Great for improving skills.",
+  },
 ];
 
 export default function JoinMatch() {
@@ -129,48 +150,59 @@ export default function JoinMatch() {
   const [skillFilter, setSkillFilter] = useState("");
   const [isRequesting, setIsRequesting] = useState(false);
 
-  const filteredMatches = matches.filter(match => {
-    const matchesSearch = match.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         match.location.toLowerCase().includes(searchTerm.toLowerCase());
+  const filteredMatches = matches.filter((match) => {
+    const matchesSearch =
+      match.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      match.location.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesSport = !sportFilter || match.sport === sportFilter;
     const matchesSkill = !skillFilter || match.skillLevel === skillFilter;
-    
+
     return matchesSearch && matchesSport && matchesSkill;
   });
 
   const handleMatchSelect = (match: Match) => {
     setSelectedMatch(match);
-    if (match.status !== 'full') {
+    if (match.status !== "full") {
       setShowRequestModal(true);
     }
   };
 
   const handleJoinRequest = async () => {
     setIsRequesting(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       setIsRequesting(false);
       setShowRequestModal(false);
-      alert(`Join request sent to ${selectedMatch?.organizer.name}! You'll be notified when they respond.`);
+      alert(
+        `Join request sent to ${selectedMatch?.organizer.name}! You'll be notified when they respond.`,
+      );
     }, 1500);
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'open': return 'bg-feijoa-100 text-feijoa-700';
-      case 'almost-full': return 'bg-energy-100 text-energy-700';
-      case 'full': return 'bg-red-100 text-red-700';
-      default: return 'bg-gray-100 text-gray-700';
+      case "open":
+        return "bg-feijoa-100 text-feijoa-700";
+      case "almost-full":
+        return "bg-energy-100 text-energy-700";
+      case "full":
+        return "bg-red-100 text-red-700";
+      default:
+        return "bg-gray-100 text-gray-700";
     }
   };
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'open': return 'Open';
-      case 'almost-full': return 'Almost Full';
-      case 'full': return 'Full';
-      default: return 'Unknown';
+      case "open":
+        return "Open";
+      case "almost-full":
+        return "Almost Full";
+      case "full":
+        return "Full";
+      default:
+        return "Unknown";
     }
   };
 
@@ -185,17 +217,39 @@ export default function JoinMatch() {
                 <div className="w-8 h-8 bg-gradient-atlantis rounded-lg flex items-center justify-center">
                   <Trophy className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-xl font-bold text-gray-900">QuickCourt</span>
+                <span className="text-xl font-bold text-gray-900">
+                  QuickCourt
+                </span>
               </Link>
               <div className="hidden md:flex space-x-6">
-                <Link to="/courts" className="text-gray-700 hover:text-atlantis-500 transition-colors">Courts</Link>
-                <Link to="/matches" className="text-atlantis-500 font-medium">Matches</Link>
-                <Link to="/community" className="text-gray-700 hover:text-atlantis-500 transition-colors">Community</Link>
+                <Link
+                  to="/courts"
+                  className="text-gray-700 hover:text-atlantis-500 transition-colors"
+                >
+                  Courts
+                </Link>
+                <Link to="/matches" className="text-atlantis-500 font-medium">
+                  Matches
+                </Link>
+                <Link
+                  to="/community"
+                  className="text-gray-700 hover:text-atlantis-500 transition-colors"
+                >
+                  Community
+                </Link>
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <Link to="/profile" className="text-gray-700 hover:text-atlantis-500 transition-colors">Profile</Link>
-              <Link to="/create-match" className="px-4 py-2 bg-feijoa-500 text-white rounded-xl font-medium hover:bg-feijoa-600 transition-all duration-300">
+              <Link
+                to="/profile"
+                className="text-gray-700 hover:text-atlantis-500 transition-colors"
+              >
+                Profile
+              </Link>
+              <Link
+                to="/create-match"
+                className="px-4 py-2 bg-feijoa-500 text-white rounded-xl font-medium hover:bg-feijoa-600 transition-all duration-300"
+              >
                 Create Match
               </Link>
             </div>
@@ -212,8 +266,12 @@ export default function JoinMatch() {
                 <Users className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">Join a Match</h1>
-                <p className="text-gray-600">Find and join exciting sports matches happening near you</p>
+                <h1 className="text-3xl font-bold text-gray-900">
+                  Join a Match
+                </h1>
+                <p className="text-gray-600">
+                  Find and join exciting sports matches happening near you
+                </p>
               </div>
             </div>
           </div>
@@ -275,7 +333,7 @@ export default function JoinMatch() {
           {filteredMatches.map((match, index) => {
             const SportIcon = match.sportIcon;
             return (
-              <div 
+              <div
                 key={match.id}
                 className="group relative bg-white rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer animate-slide-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
@@ -289,11 +347,15 @@ export default function JoinMatch() {
                         <SportIcon className="w-5 h-5 text-white" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-gray-900">{match.title}</h3>
+                        <h3 className="font-bold text-gray-900">
+                          {match.title}
+                        </h3>
                         <p className="text-sm text-gray-600">{match.sport}</p>
                       </div>
                     </div>
-                    <span className={`px-3 py-1 text-xs font-medium rounded-full ${getStatusColor(match.status)}`}>
+                    <span
+                      className={`px-3 py-1 text-xs font-medium rounded-full ${getStatusColor(match.status)}`}
+                    >
                       {getStatusText(match.status)}
                     </span>
                   </div>
@@ -301,28 +363,39 @@ export default function JoinMatch() {
                   <div className="space-y-3 mb-4">
                     <div className="flex items-center text-gray-600">
                       <Clock className="w-4 h-4 mr-2" />
-                      <span className="text-sm">{match.date} at {match.time}</span>
+                      <span className="text-sm">
+                        {match.date} at {match.time}
+                      </span>
                     </div>
                     <div className="flex items-center text-gray-600">
                       <MapPin className="w-4 h-4 mr-2" />
-                      <span className="text-sm">{match.courtName} • {match.distance}</span>
+                      <span className="text-sm">
+                        {match.courtName} • {match.distance}
+                      </span>
                     </div>
                     <div className="flex items-center text-gray-600">
                       <Users className="w-4 h-4 mr-2" />
-                      <span className="text-sm">{match.currentPlayers}/{match.maxPlayers} players • {match.skillLevel}</span>
+                      <span className="text-sm">
+                        {match.currentPlayers}/{match.maxPlayers} players •{" "}
+                        {match.skillLevel}
+                      </span>
                     </div>
                   </div>
 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
-                      <img 
-                        src={match.organizer.avatar} 
+                      <img
+                        src={match.organizer.avatar}
                         alt={match.organizer.name}
                         className="w-6 h-6 rounded-full"
                       />
-                      <span className="text-sm text-gray-600">{match.organizer.name}</span>
+                      <span className="text-sm text-gray-600">
+                        {match.organizer.name}
+                      </span>
                     </div>
-                    <span className="text-sm font-medium text-energy-600">{match.price}</span>
+                    <span className="text-sm font-medium text-energy-600">
+                      {match.price}
+                    </span>
                   </div>
                 </div>
 
@@ -330,25 +403,31 @@ export default function JoinMatch() {
                 <div className="absolute inset-0 p-6 bg-gradient-to-br from-atlantis-500 to-apple-600 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between">
                   <div>
                     <h3 className="font-bold text-xl mb-2">{match.title}</h3>
-                    <p className="text-white/90 text-sm mb-4">{match.description}</p>
-                    
+                    <p className="text-white/90 text-sm mb-4">
+                      {match.description}
+                    </p>
+
                     <div className="space-y-2 mb-4">
                       <div className="flex items-center">
                         <Clock className="w-4 h-4 mr-2" />
-                        <span className="text-sm">{match.duration}h duration</span>
+                        <span className="text-sm">
+                          {match.duration}h duration
+                        </span>
                       </div>
                       <div className="flex items-center">
                         <Star className="w-4 h-4 mr-2" />
-                        <span className="text-sm">Organizer rating: {match.organizer.rating}/5</span>
+                        <span className="text-sm">
+                          Organizer rating: {match.organizer.rating}/5
+                        </span>
                       </div>
                     </div>
                   </div>
-                  
-                  <button 
+
+                  <button
                     className="w-full py-3 bg-white text-atlantis-600 font-semibold rounded-xl hover:bg-gray-100 transition-colors"
-                    disabled={match.status === 'full'}
+                    disabled={match.status === "full"}
                   >
-                    {match.status === 'full' ? 'Match Full' : 'Request to Join'}
+                    {match.status === "full" ? "Match Full" : "Request to Join"}
                   </button>
                 </div>
               </div>
@@ -361,9 +440,13 @@ export default function JoinMatch() {
             <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <Search className="w-8 h-8 text-gray-400" />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">No matches found</h3>
-            <p className="text-gray-600 mb-6">Try adjusting your filters or search terms</p>
-            <Link 
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              No matches found
+            </h3>
+            <p className="text-gray-600 mb-6">
+              Try adjusting your filters or search terms
+            </p>
+            <Link
               to="/create-match"
               className="inline-flex items-center space-x-2 px-6 py-3 bg-atlantis-500 text-white rounded-xl font-medium hover:bg-apple-500 transition-all duration-300"
             >
@@ -381,26 +464,39 @@ export default function JoinMatch() {
               <div className="w-16 h-16 bg-gradient-feijoa rounded-full flex items-center justify-center mx-auto mb-4">
                 <CheckCircle className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Join Match Request</h3>
-              <p className="text-gray-600">Send a request to join "{selectedMatch.title}"</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                Join Match Request
+              </h3>
+              <p className="text-gray-600">
+                Send a request to join "{selectedMatch.title}"
+              </p>
             </div>
 
             <div className="bg-sahara-50 rounded-xl p-4 mb-6">
               <div className="flex items-center space-x-3 mb-3">
-                <img 
-                  src={selectedMatch.organizer.avatar} 
+                <img
+                  src={selectedMatch.organizer.avatar}
                   alt={selectedMatch.organizer.name}
                   className="w-10 h-10 rounded-full"
                 />
                 <div>
-                  <div className="font-medium text-gray-900">{selectedMatch.organizer.name}</div>
+                  <div className="font-medium text-gray-900">
+                    {selectedMatch.organizer.name}
+                  </div>
                   <div className="text-sm text-gray-600">Match Organizer</div>
                 </div>
               </div>
               <div className="text-sm text-gray-600">
-                <p><strong>Date:</strong> {selectedMatch.date} at {selectedMatch.time}</p>
-                <p><strong>Location:</strong> {selectedMatch.courtName}</p>
-                <p><strong>Cost:</strong> {selectedMatch.price}</p>
+                <p>
+                  <strong>Date:</strong> {selectedMatch.date} at{" "}
+                  {selectedMatch.time}
+                </p>
+                <p>
+                  <strong>Location:</strong> {selectedMatch.courtName}
+                </p>
+                <p>
+                  <strong>Cost:</strong> {selectedMatch.price}
+                </p>
               </div>
             </div>
 
@@ -422,7 +518,7 @@ export default function JoinMatch() {
                     <span>Sending...</span>
                   </div>
                 ) : (
-                  'Send Request'
+                  "Send Request"
                 )}
               </button>
             </div>

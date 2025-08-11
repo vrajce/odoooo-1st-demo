@@ -1,6 +1,20 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Trophy, MapPin, Users, Clock, Calendar, Plus, Minus, Circle, Hexagon, Target, Square, Octagon, Zap } from "lucide-react";
+import {
+  Trophy,
+  MapPin,
+  Users,
+  Clock,
+  Calendar,
+  Plus,
+  Minus,
+  Circle,
+  Hexagon,
+  Target,
+  Square,
+  Octagon,
+  Zap,
+} from "lucide-react";
 
 interface Court {
   id: number;
@@ -14,12 +28,22 @@ interface Court {
 }
 
 const sports = [
-  { id: "basketball", name: "Basketball", icon: Circle, color: "bg-orange-500" },
+  {
+    id: "basketball",
+    name: "Basketball",
+    icon: Circle,
+    color: "bg-orange-500",
+  },
   { id: "football", name: "Football", icon: Hexagon, color: "bg-green-500" },
   { id: "tennis", name: "Tennis", icon: Target, color: "bg-yellow-500" },
   { id: "volleyball", name: "Volleyball", icon: Square, color: "bg-blue-500" },
-  { id: "tabletennis", name: "Table Tennis", icon: Octagon, color: "bg-red-500" },
-  { id: "badminton", name: "Badminton", icon: Zap, color: "bg-purple-500" }
+  {
+    id: "tabletennis",
+    name: "Table Tennis",
+    icon: Octagon,
+    color: "bg-red-500",
+  },
+  { id: "badminton", name: "Badminton", icon: Zap, color: "bg-purple-500" },
 ];
 
 const courts: Court[] = [
@@ -31,28 +55,28 @@ const courts: Court[] = [
     price: "₹500/hour",
     rating: 4.8,
     lat: 28.6139,
-    lng: 77.2090
+    lng: 77.209,
   },
   {
     id: 2,
-    name: "Elite Sports Center", 
+    name: "Elite Sports Center",
     location: "Business Park",
     sports: ["Football", "Volleyball"],
     price: "₹750/hour",
     rating: 4.9,
     lat: 28.6169,
-    lng: 77.2120
+    lng: 77.212,
   },
   {
     id: 3,
     name: "Community Sports Hub",
-    location: "Residential Area", 
+    location: "Residential Area",
     sports: ["Table Tennis", "Badminton"],
     price: "₹350/hour",
     rating: 4.6,
-    lat: 28.6200,
-    lng: 77.2150
-  }
+    lat: 28.62,
+    lng: 77.215,
+  },
 ];
 
 export default function CreateMatch() {
@@ -66,16 +90,23 @@ export default function CreateMatch() {
     skillLevel: "intermediate",
     courtId: "",
     description: "",
-    isPrivate: false
+    isPrivate: false,
   });
 
   const [selectedCourt, setSelectedCourt] = useState<Court | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
     const { name, value, type } = e.target;
-    if (type === 'checkbox') {
-      setFormData({ ...formData, [name]: (e.target as HTMLInputElement).checked });
+    if (type === "checkbox") {
+      setFormData({
+        ...formData,
+        [name]: (e.target as HTMLInputElement).checked,
+      });
     } else {
       setFormData({ ...formData, [name]: value });
     }
@@ -92,20 +123,26 @@ export default function CreateMatch() {
 
   const incrementPlayers = () => {
     if (formData.playersRequired < 20) {
-      setFormData({ ...formData, playersRequired: formData.playersRequired + 1 });
+      setFormData({
+        ...formData,
+        playersRequired: formData.playersRequired + 1,
+      });
     }
   };
 
   const decrementPlayers = () => {
     if (formData.playersRequired > 2) {
-      setFormData({ ...formData, playersRequired: formData.playersRequired - 1 });
+      setFormData({
+        ...formData,
+        playersRequired: formData.playersRequired - 1,
+      });
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false);
@@ -125,16 +162,38 @@ export default function CreateMatch() {
                 <div className="w-8 h-8 bg-gradient-atlantis rounded-lg flex items-center justify-center">
                   <Trophy className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-xl font-bold text-gray-900">QuickCourt</span>
+                <span className="text-xl font-bold text-gray-900">
+                  QuickCourt
+                </span>
               </Link>
               <div className="hidden md:flex space-x-6">
-                <Link to="/courts" className="text-gray-700 hover:text-atlantis-500 transition-colors">Courts</Link>
-                <Link to="/matches" className="text-gray-700 hover:text-atlantis-500 transition-colors">Matches</Link>
-                <Link to="/community" className="text-gray-700 hover:text-atlantis-500 transition-colors">Community</Link>
+                <Link
+                  to="/courts"
+                  className="text-gray-700 hover:text-atlantis-500 transition-colors"
+                >
+                  Courts
+                </Link>
+                <Link
+                  to="/matches"
+                  className="text-gray-700 hover:text-atlantis-500 transition-colors"
+                >
+                  Matches
+                </Link>
+                <Link
+                  to="/community"
+                  className="text-gray-700 hover:text-atlantis-500 transition-colors"
+                >
+                  Community
+                </Link>
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <Link to="/profile" className="text-gray-700 hover:text-atlantis-500 transition-colors">Profile</Link>
+              <Link
+                to="/profile"
+                className="text-gray-700 hover:text-atlantis-500 transition-colors"
+              >
+                Profile
+              </Link>
               <button className="px-6 py-2 bg-gradient-atlantis text-white rounded-xl font-medium hover:shadow-atlantis-glow transition-all duration-300">
                 Logout
               </button>
@@ -151,8 +210,12 @@ export default function CreateMatch() {
               <Plus className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Create a Match</h1>
-              <p className="text-gray-600">Organize a sports match and invite players to join</p>
+              <h1 className="text-3xl font-bold text-gray-900">
+                Create a Match
+              </h1>
+              <p className="text-gray-600">
+                Organize a sports match and invite players to join
+              </p>
             </div>
           </div>
         </div>
@@ -166,12 +229,16 @@ export default function CreateMatch() {
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Match Details Card */}
               <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-                <h2 className="text-xl font-semibold text-gray-900 mb-6">Match Details</h2>
-                
+                <h2 className="text-xl font-semibold text-gray-900 mb-6">
+                  Match Details
+                </h2>
+
                 <div className="space-y-4">
                   {/* Title */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Match Title</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Match Title
+                    </label>
                     <input
                       type="text"
                       name="title"
@@ -185,7 +252,9 @@ export default function CreateMatch() {
 
                   {/* Sport Selection */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-3">Sport</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-3">
+                      Sport
+                    </label>
                     <div className="grid grid-cols-3 gap-3">
                       {sports.map((sport) => {
                         const IconComponent = sport.icon;
@@ -196,14 +265,18 @@ export default function CreateMatch() {
                             onClick={() => handleSportSelect(sport.id)}
                             className={`p-3 rounded-xl border-2 transition-all duration-300 hover:shadow-feijoa-glow ${
                               formData.sport === sport.id
-                                ? 'border-feijoa-500 bg-feijoa-50 shadow-feijoa-glow/30'
-                                : 'border-gray-200 bg-white hover:border-feijoa-300'
+                                ? "border-feijoa-500 bg-feijoa-50 shadow-feijoa-glow/30"
+                                : "border-gray-200 bg-white hover:border-feijoa-300"
                             }`}
                           >
-                            <div className={`w-8 h-8 ${sport.color} rounded-lg flex items-center justify-center mx-auto mb-2`}>
+                            <div
+                              className={`w-8 h-8 ${sport.color} rounded-lg flex items-center justify-center mx-auto mb-2`}
+                            >
                               <IconComponent className="w-4 h-4 text-white" />
                             </div>
-                            <div className="text-xs font-medium text-gray-900">{sport.name}</div>
+                            <div className="text-xs font-medium text-gray-900">
+                              {sport.name}
+                            </div>
                           </button>
                         );
                       })}
@@ -213,7 +286,9 @@ export default function CreateMatch() {
                   {/* Date and Time */}
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Date</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Date
+                      </label>
                       <div className="relative">
                         <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                         <input
@@ -227,7 +302,9 @@ export default function CreateMatch() {
                       </div>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Time</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Time
+                      </label>
                       <div className="relative">
                         <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                         <input
@@ -244,7 +321,9 @@ export default function CreateMatch() {
 
                   {/* Duration */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Duration (hours)</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Duration (hours)
+                    </label>
                     <select
                       name="duration"
                       value={formData.duration}
@@ -261,7 +340,9 @@ export default function CreateMatch() {
 
                   {/* Players Required */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Players Required</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Players Required
+                    </label>
                     <div className="flex items-center space-x-4">
                       <button
                         type="button"
@@ -290,15 +371,17 @@ export default function CreateMatch() {
 
                   {/* Skill Level */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Skill Level</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Skill Level
+                    </label>
                     <div className="grid grid-cols-3 gap-3">
                       {["beginner", "intermediate", "advanced"].map((level) => (
                         <label
                           key={level}
                           className={`p-3 rounded-xl border-2 cursor-pointer transition-all duration-300 ${
                             formData.skillLevel === level
-                              ? 'border-atlantis-500 bg-atlantis-50'
-                              : 'border-gray-200 bg-white hover:border-atlantis-300'
+                              ? "border-atlantis-500 bg-atlantis-50"
+                              : "border-gray-200 bg-white hover:border-atlantis-300"
                           }`}
                         >
                           <input
@@ -310,7 +393,9 @@ export default function CreateMatch() {
                             className="sr-only"
                           />
                           <div className="text-center">
-                            <div className="font-medium text-gray-900 capitalize">{level}</div>
+                            <div className="font-medium text-gray-900 capitalize">
+                              {level}
+                            </div>
                           </div>
                         </label>
                       ))}
@@ -319,7 +404,9 @@ export default function CreateMatch() {
 
                   {/* Description */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Description (Optional)</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Description (Optional)
+                    </label>
                     <textarea
                       name="description"
                       value={formData.description}
@@ -358,7 +445,7 @@ export default function CreateMatch() {
                     <span>Creating Match...</span>
                   </div>
                 ) : (
-                  'Create Match'
+                  "Create Match"
                 )}
               </button>
             </form>
@@ -380,13 +467,17 @@ export default function CreateMatch() {
                     onClick={() => handleCourtSelect(court)}
                     className={`p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 hover:shadow-md ${
                       selectedCourt?.id === court.id
-                        ? 'border-atlantis-500 bg-atlantis-50'
-                        : 'border-gray-200 bg-white hover:border-atlantis-300'
+                        ? "border-atlantis-500 bg-atlantis-50"
+                        : "border-gray-200 bg-white hover:border-atlantis-300"
                     }`}
                   >
                     <div className="flex justify-between items-start mb-2">
-                      <h3 className="font-semibold text-gray-900">{court.name}</h3>
-                      <span className="text-sm font-medium text-energy-600">{court.price}</span>
+                      <h3 className="font-semibold text-gray-900">
+                        {court.name}
+                      </h3>
+                      <span className="text-sm font-medium text-energy-600">
+                        {court.price}
+                      </span>
                     </div>
                     <div className="flex items-center text-gray-600 mb-2">
                       <MapPin className="w-4 h-4 mr-1" />
@@ -409,18 +500,28 @@ export default function CreateMatch() {
 
             {/* Map Placeholder */}
             <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Court Locations</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                Court Locations
+              </h3>
               <div className="w-full h-64 bg-gradient-to-br from-sahara-100 to-feijoa-100 rounded-xl flex items-center justify-center border-2 border-dashed border-gray-300">
                 <div className="text-center">
                   <MapPin className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-                  <p className="text-gray-500">Interactive map with court pins</p>
-                  <p className="text-sm text-gray-400">Click pins to select courts</p>
+                  <p className="text-gray-500">
+                    Interactive map with court pins
+                  </p>
+                  <p className="text-sm text-gray-400">
+                    Click pins to select courts
+                  </p>
                 </div>
               </div>
               {selectedCourt && (
                 <div className="mt-4 p-3 bg-atlantis-50 rounded-xl">
-                  <p className="text-sm font-medium text-atlantis-700">Selected: {selectedCourt.name}</p>
-                  <p className="text-xs text-atlantis-600">{selectedCourt.location}</p>
+                  <p className="text-sm font-medium text-atlantis-700">
+                    Selected: {selectedCourt.name}
+                  </p>
+                  <p className="text-xs text-atlantis-600">
+                    {selectedCourt.location}
+                  </p>
                 </div>
               )}
             </div>
